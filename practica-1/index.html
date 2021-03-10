@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Calcetines XID</title>
+  <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
+      crossorigin="anonymous"
+  >
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <div class="container">
+      <div class="row">
+        <div class="col-4">
+          <img
+              :src="image"
+              alt=""
+              class="img-fluid border"
+          >
+        </div>
+        <div class="col-8">
+          <div class="row">
+            <div class="col">
+              <h1>{{ title }}</h1>
+              <button class="btn btn-warning float-end">Cart ({{cart}})</button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <p>{{ stock }}</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <h2>Details</h2>
+              <ul>
+                <li
+                    v-for="detail in details"
+                    :key="detail"
+                >
+                  {{ detail }}
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <h3>Colors</h3>
+              <p
+                  v-for="(variant, index) in variants"
+                  :style="{backgroundColor: variant.variantColor, width: '32px', height: '32px', cursor: 'pointer'}"
+                  @mouseover="updateVariant(index)"
+              >
+              
+              </p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <button
+                  class="btn btn-success"
+                  @click="addCart"
+                  :disabled="!inStock"
+              >Agregar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="./main.js"></script>
+</body>
+</html>
