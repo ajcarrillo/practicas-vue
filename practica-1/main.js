@@ -27,7 +27,8 @@ const app = new Vue({
       this.selectedVariant = index
     },
     addCart() {
-      this.cart += 1
+      this.cart++
+      this.variants[this.selectedVariant].variantQuantity--
     }
   },
   computed: {
