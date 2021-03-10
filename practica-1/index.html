@@ -15,60 +15,9 @@
   <div id="app">
     <div class="container">
       <div class="row">
-        <div class="col-4">
-          <img
-              :src="image"
-              alt=""
-              class="img-fluid border"
-          >
-        </div>
-        <div class="col-8">
-          <div class="row">
-            <div class="col">
-              <h1>{{ title }}</h1>
-              <button class="btn btn-warning float-end">Cart ({{cart}})</button>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col">
-              <p>{{ stock }}</p>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col">
-              <h2>Details</h2>
-              <ul>
-                <li
-                    v-for="detail in details"
-                    :key="detail"
-                >
-                  {{ detail }}
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col">
-              <h3>Colors</h3>
-              <p
-                  v-for="(variant, index) in variants"
-                  :style="{backgroundColor: variant.variantColor, width: '32px', height: '32px', cursor: 'pointer'}"
-                  @mouseover="updateVariant(index)"
-              >
-              
-              </p>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col">
-              <button
-                  class="btn btn-success"
-                  @click="addCart"
-                  :disabled="!inStock"
-              >Agregar
-              </button>
-            </div>
-          </div>
+        <div class="col">
+          <button class="btn btn-warning float-end">Cart ({{cart.length}})</button>
+          <product @add="addCart"></product>
         </div>
       </div>
     </div>
